@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncing Ball</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden; /* 스크롤바 안 뜨게 */
+      background: #111;
+    }
+    #ball {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+  <div id="ball"></div>
+
+  <script>
+    const ball = document.getElementById("ball");
+    let x = 100, y = 100;        // 시작 좌표
+    let dx = 3, dy = 3;          // 이동 속도 (x,y 방향)
+    const size = 50;             // 공 크기
+    const friction = 0.995;   // 감속 계수 (1보다 작아야 함)
+    const speedBoost = 5;        // 마우스 닿았을 때 튀는 추가 속도
+    let mouseX = 0, mouseY = 0;  // 마우스 좌표
+
+    // 마우스 위치 추적
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animate() {
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
+
+      // 공 위치 갱신
+      x += dx;
+      y += dy;
+
+      // 벽 충돌 (좌우)
+      if (x <= 0 || x + size >= winWidth) {
+        dx = -dx; // 반대 방향
+      }
+      // 벽 충돌 (위아래)
+      if (y <= 0 || y + size >= winHeight) {
+        dy = -dy;
+      }
+
+      // 마우스와의 거리 계산
+      const distX = (x + size / 2) - mouseX;
+      const distY = (y + size / 2) - mouseY;
+      const dist = Math.sqrt(distX * distX + distY * distY);
+
+      if (dist < size) {
+        // 마우스 근처에 닿으면 반대 방향으로 튕겨나감
+        dx = (distX > 0 ? 1 : -1) * (Math.abs(dx) + speedBoost);
+        dy = (distY > 0 ? 1 : -1) * (Math.abs(dy) + speedBoost);
+      }
+
+        // 감속 적용
+        dx *= friction;
+        dy *= friction;
+
+        // 너무 느려지면 멈춤 처리 (옵션)
+        if (Math.abs(dx) < 0.05) dx = 0;
+        if (Math.abs(dy) < 0.05) dy = 0;
+      // 위치 적용
+      ball.style.left = x + "px";
+      ball.style.top = y + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

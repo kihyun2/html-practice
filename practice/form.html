@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 로그인 폼 -->
+     <form name="login" method="get">
+        <label for="id">아이디</label>
+        <input type="text" name="id" id="id"><br>
+        <label for="password">비밀번호</label>
+        <input type="password" name="password" id="password"><br>
+        <label for="자기소개서">자소서</label>
+        <textarea name="intro" id="intro" cols="10" rows="10">이 곳에 자기소개서 작성</textarea><br>
+        <label for="ide"> 통합 개발환경을 선택해주세요:</label>
+        <select name="ide" id="ide" onchange="changeIcon(this)">
+            <option value="eclipse">eclipse</option>
+            <option value="vscode">vscode</option>
+            <option value="intellij">intellij</option>
+            <option value="sts4">sts4</option>
+        </select>
+        <img id= "icon" src="image/eclipse.png" alt="" width="20px" height="20px"><br>
+        <button type="submit">제출</button>
+        <fieldset id="fieldset1">
+            <legend>Choose your languages:</legend>
+            <input type="checkbox" id="chk1" name="html" />
+            <label for="chk1">HTML</label>
+            <input type="checkbox" id="chk2" name="css" />
+            <label for="chk2">CSS</label>
+            <input type="checkbox" id="chk3" name="javascript" />
+            <label for="chk3">JavaScript</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Choose one : </legend>
+            <input type="radio" id="html" name="fav_language" value="HTML" checked>
+            <label for="html">HTML</label><br>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">CSS</label><br>
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            <label for="javascript">JavaScript</label>
+        </fieldset>
+     </form>
+     <script>
+        // 체크박스의 모든 체크상자를 다 선택된것으로 변경하기
+        document.querySelectorAll("#fieldset1 input").forEach((x)=>x.checked = true);
+        // 라디오 버튼의 첫번째 옵션을 선택한 것으로 변경하기
+        document.login.fav_language[0].checked = true;
+        function changeIcon(obj){
+            let icon = document.querySelector("#icon");
+            if(obj.value == "eclipse") icon.src = "image/"+ obj.value + ".png";
+            else icon.src = "image/"+ obj.value + ".jfif"
+        }
+     </script>
+</body>
+</html>

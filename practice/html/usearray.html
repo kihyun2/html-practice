@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 onclick="func()">학생의 점수처리</h1>
+    <hr>
+    <!-- 학생의 점수를 입력받아서 배열에 저장
+    입력값이 end면 종료 숫자가 아니면 배열에 ㅈ저장안함
+    0보다 작거나 100보다 크면 저장 안함
+    총합과 인원수 평균 출력 -->
+    <script>
+        function func(){
+            let arry = [];
+            let sum = 0;
+            while(true){
+                var s = prompt("end를 입력하면 종료, 입력값을 입력하세요","");
+                if (s.toLowerCase == "end") break;
+                if (isNaN(s) || s == "") continue
+                s = parseInt(s);
+                if (s < 0 || s > 100) continue
+                arry.push(s);
+                sum += s;
+            }
+            console.log(arry);
+            console.log("인원수:",arry.length,"평균:",sum/arry.length);
+        }
+    </script>
+    
+</body>
+</html>

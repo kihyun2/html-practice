@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dom 객체 알아보기</h1>
+    <hr>
+    <p id="firstP" style="color: blue;" onclick="change(this, '40px','violet')">
+        이것은
+        <span id="span" style="color: red;">문장입니다.</span>
+    </p>
+    <button id="btn" onclick="change(this, '10px','red')">클릭하세요</button>
+    <button id="btn2" onclick="change(this,'30px','blue')">클릭하세요</button>
+    <script>
+        function changeColor(){
+            const btn = document.getElementById("btn");
+            const p = document.getElementById("firstP");
+            console.log(`${p.style}, ${p.innerHTML}`);
+            p.style.backgroundColor = 'violet';
+            let str = "어나롬ㅇ나ㅓ로ㅓㄴㅇ"+p.style.color+"ㅓ로ㅓㄴㅇ";
+            let str1 = `asdas${str}dasdsadsa`;
+            let str2 = `asdasdasdsadsa`;
+            console.log(str2)
+            
+            
+        }
+        function change(obj, size, color){
+            obj.style.fontSize = size;
+            obj.style.color = color;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let count = 0;
+        function createDiv(){
+            let div = document.createElement("div");
+            div.innerHTML = "새로 만들어진 div" + count++;
+            div.className = "myDiv";
+            div.style.backgroundColor = "yellow";
+            let parent = document.body;
+            div.addEventListener("mouseover",(event) => {
+                event.target.remove();
+            });
+            parent.appendChild(div);
+        }
+        function removeDiv(){
+            let child = document.getElementById("myDiv");
+            let parent = child.parentElement;
+            parent.removeChild(child);
+        }
+        function search(e){
+            e.preventDefault();
+            console.log("검색 결과 출력");
+        }
+        </script>
+</head>
+<body>
+    <h1>Dom 객체 동적 추가</h1>
+    <hr>
+    <div>Dom 트리에 새로 만든 Dom 객체를 추가하는 예제</div>
+    <a href="javascript:createDiv()">Div 생성</a>
+
+    <form action="#" method="get">
+        <label for="inp">검색할 키워드: </label>
+        <input type="text" name="inp" id="inp">
+        <button type="submit" onclick="search(event)">제출</button>
+    </form>
+</body>
+</html>

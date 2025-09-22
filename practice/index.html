@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <script>
+        function toggle() {
+            obj = document.getElementById("card1");
+            if (obj.class == 'image1'){
+                obj.src = 'image/front_side.jpg';
+                obj.class = 'image2';
+            } else {
+                obj.src = 'image/back_side.jpg';
+                obj.class = 'image1';
+            }
+        }
+        function over(){
+            obj = document.getElementById("card2");
+            obj.src = 'image/front_side.jpg'
+        }
+        function out(){
+            obj = document.getElementById("card2");
+            obj.src = 'image/back_side.jpg'
+        }
+        function overWithParam(obj){
+            obj.src = 'image/front_side.jpg'
+        }
+        function outWithParam(obj){
+            obj.src = 'image/back_side.jpg'
+        }
+        document.getElementById("card2").onclick()
+    </script>
+</head>
+
+<body>
+    <div style="width: 300px; height: 129px; display: flex; flex-direction: row; overflow: hidden;">
+        <!-- 매개변수 없고 반환값 없는 함수 -->
+        <img id = "card1" src="image/back_side.jpg" alt="card" width="100px" height="140px" class="image1" onclick="toggle()">
+        <img id = "card2" src="image/back_side.jpg" alt="card" width="100px" height="140px" class="image1"
+            onmouseover="over()"
+            onmouseleave="out()">
+        <!-- 매개 변수 있고 반환값 없는 함수 -->
+        <img id = "card3" src="image/back_side.jpg" alt="card" width="100px" height="140px" class="image1"
+            onmouseover="overWithParam(this)"
+            onmouseout="outWithParam(this)">
+    </div>
+
+</body>
+
+</html>

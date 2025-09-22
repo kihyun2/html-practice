@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let account = {
+            owner: "홍길동",
+            code: "111",
+            balance:10000,
+            inquiry:function(){},
+            deposit:function(){},
+            withdraw:function(){}
+        }
+
+        function Account(owner,code,balance){
+            this.owner = owner;
+            this.code = code;
+            this.balance = balance;
+
+            this.inquiry = function(){};
+            this.deposit = function(){};
+            this.withdraw = function(){};
+        }
+        let acc1 = new Account("홍길동", "111","10000");
+        let acc2 = new Account("james", "222","20000");
+        
+        // ES6 문법 연습 - for of / for in
+        let accounts = [acc1,acc2];
+        for (const account of accounts) {
+            console.log(`account 출력 ${account.code}, ${account.inquiry}`)
+        }
+
+        for(const key in acc1){
+            if(!Object.hasOwn(acc1,key)) continue;
+            const element = acc1[key];
+            console.log(key, element)
+        }
+
+        accounts.forEach((acc) => console.log(acc));
+        acccounts.forEach()
+    </script>
+</body>
+</html>

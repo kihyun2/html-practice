@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>es6 Ex</h1>
+    <hr>
+    <script>
+        const jsObject = [
+            {
+                name: "홍길동",
+                score:90
+            },
+            {
+                name: "james",
+                score:100
+            }
+        ];
+        const json = JSON.stringify(jsObject);
+        console.log(json)
+        const objectArray = JSON.parse(json);
+        console.log(objectArray)
+    </script>
+</body>
+</html>
